@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>MNIST AI Digit Recognition</title>
+
+    <link
+        rel="stylesheet"
+        href="style.css"
+    >
+
+</head>
+
+
+<body>
+
+    <main class="container">
+
+        <section class="card">
+
+            <h1>
+                MNIST AI
+            </h1>
+
+            <h2>
+                Digit Recognition
+            </h2>
+
+            <p class="description">
+                Upload an image of a handwritten digit
+                and let the neural network recognize it.
+            </p>
+
+
+            <!-- Upload -->
+
+            <div class="upload-area">
+
+                <label
+                    for="imageInput"
+                    class="upload-button"
+                >
+                    Choose Image
+                </label>
+
+                <input
+                    type="file"
+                    id="imageInput"
+                    accept="image/*"
+                >
+
+                <p id="fileName">
+                    No image selected
+                </p>
+
+            </div>
+
+
+            <!-- Preview -->
+
+            <div
+                id="previewContainer"
+                class="preview-container hidden"
+            >
+
+                <h3>
+                    Image Preview
+                </h3>
+
+                <img
+                    id="preview"
+                    src=""
+                    alt="Selected image"
+                >
+
+            </div>
+
+
+            <!-- Predict button -->
+
+            <button
+                id="predictButton"
+                disabled
+            >
+                Predict Digit
+            </button>
+
+
+            <!-- Loading -->
+
+            <div
+                id="loading"
+                class="loading hidden"
+            >
+
+                <div class="spinner"></div>
+
+                <p>
+                    AI is analyzing the image...
+                </p>
+
+            </div>
+
+
+            <!-- Result -->
+
+            <div
+                id="result"
+                class="result hidden"
+            >
+
+                <h3>
+                    Prediction
+                </h3>
+
+                <div
+                    id="prediction"
+                    class="digit"
+                >
+                    -
+                </div>
+
+                <div class="confidence">
+
+                    Confidence:
+
+                    <strong id="confidence">
+                        -
+                    </strong>
+
+                </div>
+
+            </div>
+
+
+            <!-- Error -->
+
+            <div
+                id="error"
+                class="error hidden"
+            >
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <script src="app.js"></script>
+
+</body>
+
+</html>
