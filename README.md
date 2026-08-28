@@ -1,81 +1,84 @@
 # 🧠 MNIST AI Web Application
 
-A complete handwritten digit recognition web application built with **PyTorch, FastAPI, HTML, CSS, JavaScript, Git, and GitHub**.
+A complete handwritten digit recognition web application built with **PyTorch, FastAPI, HTML, CSS, and JavaScript**.
 
-This project demonstrates a complete Machine Learning workflow from project initialization and Git version control to neural network training, model saving, REST API development, and web-based inference.
+This project demonstrates a complete machine learning deployment workflow:
+
+```text
+Dataset
+   ↓
+Neural Network Training
+   ↓
+Model Evaluation
+   ↓
+Model Saving
+   ↓
+FastAPI REST API
+   ↓
+Frontend
+   ↓
+Image Upload
+   ↓
+AI Prediction
+   ↓
+Digit + Confidence
+```
 
 ---
 
-# 📌 Project Workflow
+# 📌 Project Overview
 
-The project was developed in the following order:
+This application uses a Convolutional Neural Network (CNN) trained on the **MNIST handwritten digit dataset**.
+
+The trained model recognizes digits from:
 
 ```text
-Create Project
-      ↓
-Initialize Git
-      ↓
-Create Virtual Environment
-      ↓
-Install Dependencies
-      ↓
-Create Neural Network
-      ↓
-Train MNIST Model
-      ↓
-Evaluate Model
-      ↓
-Save model.pth
-      ↓
-Create FastAPI Backend
-      ↓
-Test REST API
-      ↓
-Create Frontend
-      ↓
-Connect Frontend to API
-      ↓
-Test Complete Application
-      ↓
-Commit Changes
-      ↓
-Push to GitHub
+0 1 2 3 4 5 6 7 8 9
 ```
+
+The trained model is saved as:
+
+```text
+backend/model.pth
+```
+
+The model is then loaded by a FastAPI backend and exposed through a REST API.
+
+The frontend allows the user to upload an image and receive the prediction from the neural network.
 
 ---
 
 # ✨ Features
 
-* PyTorch Convolutional Neural Network
-* MNIST handwritten digit classification
+* PyTorch CNN
+* MNIST dataset
 * Model training
 * Model evaluation
-* Saved PyTorch model
+* Saved trained model
 * FastAPI REST API
 * Swagger API documentation
 * Image upload
 * Prediction confidence
 * HTML/CSS/JavaScript frontend
 * Python virtual environment
-* Git version control
-* GitHub repository
+* Git/GitHub version control
 
 ---
 
 # 📊 Model Performance
 
-The trained model achieved:
+The current trained model achieved:
 
-| Metric           |     Result |
-| ---------------- | ---------: |
-| Dataset          |      MNIST |
-| Training samples |     60,000 |
-| Test samples     |     10,000 |
-| Epochs           |          5 |
-| Test Accuracy    | **99.10%** |
-| Model format     |     `.pth` |
+| Metric           |         Result |
+| ---------------- | -------------: |
+| Dataset          |          MNIST |
+| Training samples |         60,000 |
+| Test samples     |         10,000 |
+| Epochs           |              5 |
+| Test Accuracy    |     **99.10%** |
+| Model format     | PyTorch `.pth` |
 
-Training result:
+Training output:
 
 ```text
 Epoch 4 completed | Average Loss: 0.0339
@@ -86,14 +89,39 @@ Evaluating model...
 ==================================================
 Test Accuracy: 99.10%
 ==================================================
-
-Model saved as:
-backend/model.pth
 ```
 
 ---
 
-# 🛠️ Technologies
+# 📁 Project Structure
+
+```text
+mnist-web-app/
+│
+├── .venv/
+│
+├── backend/
+│   ├── main.py
+│   ├── model.py
+│   ├── train.py
+│   ├── model.pth
+│   └── requirements.txt
+│
+├── frontend/
+│   ├── index.html
+│   ├── style.css
+│   └── app.js
+│
+├── .gitignore
+│
+└── README.md
+```
+
+> `.venv/` is intentionally excluded from Git using `.gitignore`.
+
+---
+
+# 🧰 Technologies
 
 * Python
 * PyTorch
@@ -113,115 +141,106 @@ backend/model.pth
 
 # 💻 Requirements
 
-Recommended:
+Recommended environment:
 
 ```text
 Windows 10/11
-Python 3.x 64-bit
+Python 3.10+
 Git
 VS Code
-Internet connection for downloading MNIST
 ```
 
----
-
-# 🚀 COMPLETE PROJECT SETUP FROM ZERO
-
-The following section documents the complete process used to build the project.
+The project can also work with other supported Python versions depending on the installed PyTorch version.
 
 ---
 
-# STEP 1 — Create the Project Directory
+# 🚀 Complete Setup From Zero
 
-Open PowerShell.
+This section contains the complete command sequence needed to recreate and run the project.
 
-Create the project folder:
+---
+
+# 1. Install Git
+
+Install Git for Windows from:
+
+https://git-scm.com/download/win
+
+Verify the installation:
 
 ```powershell
-mkdir mnist-web-app
+git --version
 ```
 
-Enter the project:
+Example:
+
+```text
+git version 2.x.x
+```
+
+---
+
+# 2. Install Python
+
+Check Python:
+
+```powershell
+python --version
+```
+
+Also check installed Python versions:
+
+```powershell
+py -0p
+```
+
+Check which Python executable is being used:
+
+```powershell
+where.exe python
+```
+
+> It is recommended to use a 64-bit Python installation for machine learning.
+
+---
+
+# 3. Clone the GitHub Repository
+
+If the project already exists on GitHub:
+
+```powershell
+git clone https://github.com/Aliyar4061/mnist-web-app.git
+```
+
+Enter the project directory:
 
 ```powershell
 cd mnist-web-app
 ```
 
-Verify:
+Check the files:
 
 ```powershell
-pwd
+dir
 ```
 
 ---
 
-# STEP 2 — Initialize Git Immediately
+# 4. Create Python Virtual Environment
 
-Git should be initialized at the beginning of the project.
-
-Run:
-
-```powershell
-git init
-```
-
-Expected:
-
-```text
-Initialized empty Git repository
-```
-
-Check:
-
-```powershell
-git status
-```
-
-At this point the project is already under Git version control.
-
----
-
-# STEP 3 — Configure Git
-
-Set your Git username:
-
-```powershell
-git config --global user.name "Ali Zeydi Abdian"
-```
-
-Set your Git email:
-
-```powershell
-git config --global user.email "aabdian67@gmail.com"
-```
-
-Verify:
-
-```powershell
-git config --global user.name
-```
-
-```powershell
-git config --global user.email
-```
-
----
-
-# STEP 4 — Create the Virtual Environment
-
-Create the Python virtual environment:
+From the project root:
 
 ```powershell
 python -m venv .venv
 ```
 
-Activate it:
+Activate the environment:
 
 ```powershell
 .venv\Scripts\Activate.ps1
 ```
 
-The terminal should now show:
+After activation, the terminal should show:
 
 ```text
 (.venv)
@@ -230,127 +249,124 @@ The terminal should now show:
 Example:
 
 ```text
-(.venv) PS C:\...\mnist-web-app>
+(.venv) PS C:\Users\...\mnist-web-app>
 ```
 
 ---
 
-# STEP 5 — Configure `.gitignore`
+# 5. If PowerShell Blocks Activation
 
-Create:
-
-```text
-.gitignore
-```
-
-Use:
-
-```gitignore
-# Python
-__pycache__/
-*.py[cod]
-*.pyo
-
-# Virtual environments
-.venv/
-venv/
-env/
-
-# Jupyter
-.ipynb_checkpoints/
-
-# VS Code
-.vscode/
-
-# Dataset
-data/
-
-# Logs
-*.log
-
-# OS
-.DS_Store
-Thumbs.db
-```
-
-This prevents unnecessary files from entering Git.
-
-Especially:
+If you receive an execution-policy error such as:
 
 ```text
-.venv/
+running scripts is disabled on this system
 ```
 
-must not be committed.
+run:
 
----
-
-# STEP 6 — Create the Initial Project Structure
-
-Create:
-
-```text
-backend/
-frontend/
+```powershell
+Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser
 ```
 
-The project should now look like:
+Confirm with:
 
 ```text
-mnist-web-app/
-│
-├── .venv/
-│
-├── backend/
-│
-├── frontend/
-│
-└── .gitignore
+Y
+```
+
+Then activate again:
+
+```powershell
+.venv\Scripts\Activate.ps1
 ```
 
 ---
 
-# STEP 7 — Create Backend Files
+# 6. Select Python Interpreter in VS Code
 
-Inside `backend`, create:
+Open the project:
 
-```text
-backend/
-├── model.py
-├── train.py
-└── requirements.txt
+```powershell
+code .
 ```
 
-Later we will add:
+In VS Code:
 
 ```text
-main.py
-model.pth
+Ctrl + Shift + P
+```
+
+Select:
+
+```text
+Python: Select Interpreter
+```
+
+Choose:
+
+```text
+.venv\Scripts\python.exe
+```
+
+Verify from the terminal:
+
+```powershell
+python --version
 ```
 
 ---
 
-# STEP 8 — Install Python Dependencies
+# 7. Upgrade pip
 
-Move to backend:
+With `.venv` activated:
+
+```powershell
+python -m pip install --upgrade pip
+```
+
+Verify:
+
+```powershell
+pip --version
+```
+
+---
+
+# 8. Install Backend Dependencies
+
+Enter backend:
 
 ```powershell
 cd backend
 ```
 
-Install PyTorch:
+Install requirements:
+
+```powershell
+pip install -r requirements.txt
+```
+
+If you want to verify the installed packages:
+
+```powershell
+pip list
+```
+
+---
+
+# 9. Install Dependencies Manually
+
+If `requirements.txt` is unavailable or needs to be recreated, install the main packages:
 
 ```powershell
 pip install torch torchvision torchaudio
 ```
 
-Install FastAPI:
-
 ```powershell
 pip install fastapi uvicorn python-multipart pillow
 ```
 
-Save dependencies:
+Then save the installed environment:
 
 ```powershell
 pip freeze > requirements.txt
@@ -358,81 +374,47 @@ pip freeze > requirements.txt
 
 ---
 
-# STEP 9 — Verify PyTorch
+# 10. Verify PyTorch
 
-Check PyTorch:
+Run:
 
 ```powershell
 python -c "import torch; print(torch.__version__)"
 ```
 
-Check CUDA:
+Check CUDA availability:
 
 ```powershell
 python -c "import torch; print(torch.cuda.is_available())"
 ```
 
-Possible output:
+If CUDA is available:
 
 ```text
 True
 ```
 
-or:
+If not:
 
 ```text
 False
 ```
 
-The application can run on CPU or CUDA.
-
----
-
-# STEP 10 — Create the Neural Network
-
-Create:
+The application automatically uses:
 
 ```text
-backend/model.py
+CUDA
 ```
 
-This file contains the CNN architecture.
-
-The model receives:
+when available, otherwise:
 
 ```text
-28 × 28 grayscale image
-```
-
-and predicts one of:
-
-```text
-0 1 2 3 4 5 6 7 8 9
+CPU
 ```
 
 ---
 
-# STEP 11 — Create Training Script
-
-Create:
-
-```text
-backend/train.py
-```
-
-The training script:
-
-1. Downloads MNIST
-2. Loads training data
-3. Loads test data
-4. Creates the CNN
-5. Trains for 5 epochs
-6. Evaluates the model
-7. Saves the trained model
-
----
-
-# STEP 12 — Train the Model
+# 11. Train the MNIST Model
 
 From:
 
@@ -446,14 +428,14 @@ run:
 python train.py
 ```
 
-Training output should look similar to:
+The training process should display progress similar to:
 
 ```text
-Epoch [1/5]
-Epoch [2/5]
-Epoch [3/5]
-Epoch [4/5]
-Epoch [5/5]
+Epoch [1/5] ...
+Epoch [2/5] ...
+Epoch [3/5] ...
+Epoch [4/5] ...
+Epoch [5/5] ...
 ```
 
 At the end:
@@ -463,7 +445,7 @@ Evaluating model...
 Test Accuracy: 99.10%
 ```
 
-The model is saved as:
+The trained model is saved as:
 
 ```text
 backend/model.pth
@@ -471,101 +453,29 @@ backend/model.pth
 
 ---
 
-# STEP 13 — Verify the Model
+# 12. Verify Model File
 
-Check:
+From the project root:
 
 ```powershell
-Get-Item .\model.pth
+Get-Item .\backend\model.pth
 ```
 
-Check model size:
+To check its size:
 
 ```powershell
-Get-Item .\model.pth |
+Get-Item .\backend\model.pth |
 Select-Object Name,@{Name="SizeMB";Expression={[math]::Round($_.Length/1MB,2)}}
 ```
 
 ---
 
-# STEP 14 — First Git Checkpoint
+# 13. Run the FastAPI Backend
 
-At this point the project has meaningful content.
-
-Go back to project root:
-
-```powershell
-cd ..
-```
-
-Check:
-
-```powershell
-git status
-```
-
-Add files:
-
-```powershell
-git add .
-```
-
-Create the first commit:
-
-```powershell
-git commit -m "Add MNIST model training pipeline"
-```
-
-This creates a checkpoint containing the initial ML implementation.
-
----
-
-# STEP 15 — Create FastAPI Backend
-
-Create:
+Make sure you are inside:
 
 ```text
-backend/main.py
-```
-
-The API loads:
-
-```text
-backend/model.pth
-```
-
-and exposes:
-
-```text
-POST /predict
-```
-
-The API performs:
-
-```text
-Upload Image
-      ↓
-Grayscale
-      ↓
-Resize 28×28
-      ↓
-Tensor
-      ↓
-Normalization
-      ↓
-CNN
-      ↓
-Prediction
-```
-
----
-
-# STEP 16 — Run FastAPI
-
-Enter backend:
-
-```powershell
-cd backend
+mnist-web-app/backend
 ```
 
 Run:
@@ -574,17 +484,17 @@ Run:
 uvicorn main:app --reload
 ```
 
-The API should be available at:
+Expected output:
 
 ```text
-http://127.0.0.1:8000
+Uvicorn running on http://127.0.0.1:8000
 ```
 
 Keep this terminal open.
 
 ---
 
-# STEP 17 — Test FastAPI
+# 14. Test the API
 
 Open:
 
@@ -592,21 +502,57 @@ Open:
 http://127.0.0.1:8000
 ```
 
-Test health:
+Expected response:
+
+```json
+{
+    "message": "MNIST Digit Recognition API is running",
+    "model": "MNISTCNN",
+    "device": "cpu"
+}
+```
+
+---
+
+# 15. Test API Health
+
+Open:
 
 ```text
 http://127.0.0.1:8000/health
 ```
 
-Open Swagger:
+Expected response:
+
+```json
+{
+    "status": "ok",
+    "model_loaded": true,
+    "device": "cpu"
+}
+```
+
+---
+
+# 16. Open Swagger API Documentation
+
+Open:
 
 ```text
 http://127.0.0.1:8000/docs
 ```
 
+FastAPI provides an interactive API interface.
+
+The main endpoint is:
+
+```text
+POST /predict
+```
+
 ---
 
-# STEP 18 — Test `/predict`
+# 17. Test `/predict`
 
 In Swagger:
 
@@ -626,7 +572,7 @@ Then:
 Choose File
 ```
 
-Select a digit image.
+Select an image.
 
 Click:
 
@@ -646,18 +592,41 @@ Example response:
 
 ---
 
-# STEP 19 — Create Frontend
+# 18. Run the Frontend
 
-Create:
+Do not close the FastAPI terminal.
 
-```text
-frontend/
-├── index.html
-├── style.css
-└── app.js
+Open a **new VS Code terminal**.
+
+From the project root:
+
+```powershell
+cd frontend
 ```
 
-The frontend provides:
+Start the frontend web server:
+
+```powershell
+python -m http.server 5500
+```
+
+Expected output:
+
+```text
+Serving HTTP on :: port 5500
+```
+
+---
+
+# 19. Open the Web Application
+
+Open:
+
+```text
+http://127.0.0.1:5500
+```
+
+The application provides:
 
 ```text
 Choose Image
@@ -677,87 +646,189 @@ Confidence
 
 ---
 
-# STEP 20 — Run the Frontend
+# 🔌 API Architecture
 
-Keep FastAPI running.
-
-Open another terminal.
-
-Go to frontend:
-
-```powershell
-cd C:\Users\Microsoft\Desktop\mnist-web-app\frontend
-```
-
-Run:
-
-```powershell
-python -m http.server 5500
-```
-
-Open:
+The application uses the following architecture:
 
 ```text
-http://127.0.0.1:5500
+                    ┌──────────────────┐
+                    │      User        │
+                    └────────┬─────────┘
+                             │
+                             │ Upload Image
+                             ▼
+                    ┌──────────────────┐
+                    │     Frontend     │
+                    │ HTML/CSS/JS      │
+                    └────────┬─────────┘
+                             │
+                             │ POST /predict
+                             ▼
+                    ┌──────────────────┐
+                    │     FastAPI      │
+                    │   Port: 8000     │
+                    └────────┬─────────┘
+                             │
+                             ▼
+                    ┌──────────────────┐
+                    │ Image Processing │
+                    │ 28 × 28 Gray     │
+                    └────────┬─────────┘
+                             │
+                             ▼
+                    ┌──────────────────┐
+                    │    MNISTCNN      │
+                    │   model.pth      │
+                    └────────┬─────────┘
+                             │
+                             ▼
+                    ┌──────────────────┐
+                    │    Prediction    │
+                    │ Digit + Confidence│
+                    └──────────────────┘
 ```
 
 ---
 
-# STEP 21 — Test the Complete Application
+# 🧠 Image Preprocessing
 
-The final workflow is:
+Uploaded images are processed using:
 
 ```text
-User
- ↓
-Select Image
- ↓
-Frontend
- ↓
-POST /predict
- ↓
-FastAPI
- ↓
-Image Preprocessing
- ↓
-MNISTCNN
- ↓
-Prediction
- ↓
-JSON
- ↓
-Frontend
- ↓
-Digit + Confidence
+Input Image
+     ↓
+Grayscale
+     ↓
+Resize 28 × 28
+     ↓
+Tensor
+     ↓
+Normalization
+     ↓
+CNN
 ```
 
-Example:
+MNIST images use:
 
 ```text
-Prediction
-
-7
-
-Confidence: 99.12%
+28 × 28
+1 channel
+Grayscale
 ```
 
 ---
 
-# STEP 22 — Check Git Status
+# 📡 API Endpoint
 
-Stop the servers if necessary using:
+## POST `/predict`
+
+Request:
 
 ```text
-Ctrl + C
+POST http://127.0.0.1:8000/predict
 ```
 
-Return to the project root:
+Content type:
+
+```text
+multipart/form-data
+```
+
+Parameter:
+
+```text
+file
+```
+
+Example response:
+
+```json
+{
+    "prediction": 7,
+    "confidence": 0.9987,
+    "filename": "seven.png"
+}
+```
+
+---
+
+# 🔄 Complete Workflow
+
+```text
+1. Install Python
+       ↓
+2. Install Git
+       ↓
+3. Clone Repository
+       ↓
+4. Create .venv
+       ↓
+5. Activate .venv
+       ↓
+6. Install requirements
+       ↓
+7. Train model
+       ↓
+8. Save model.pth
+       ↓
+9. Start FastAPI
+       ↓
+10. Test /docs
+       ↓
+11. Start frontend server
+       ↓
+12. Open web application
+       ↓
+13. Upload image
+       ↓
+14. Receive prediction
+```
+
+---
+
+# 🌿 Git and GitHub Workflow
+
+The following section contains the Git commands used to manage this project.
+
+---
+
+# 1. Initialize Git
+
+If the project is not already a Git repository:
 
 ```powershell
-cd C:\Users\Microsoft\Desktop\mnist-web-app
+git init
 ```
 
-Check:
+---
+
+# 2. Configure Git Identity
+
+Set your GitHub username:
+
+```powershell
+git config --global user.name "Ali Zeydi Abdian"
+```
+
+Set your email:
+
+```powershell
+git config --global user.email "aabdian67@gmail.com"
+```
+
+Verify:
+
+```powershell
+git config --global user.name
+```
+
+```powershell
+git config --global user.email
+```
+
+---
+
+# 3. Check Git Status
 
 ```powershell
 git status
@@ -765,17 +836,15 @@ git status
 
 ---
 
-# STEP 23 — Add the README
+# 4. Add Files
 
-Create:
+Add all project files:
 
-```text
-README.md
+```powershell
+git add .
 ```
 
-Add the project documentation.
-
-Then:
+Or add a specific file:
 
 ```powershell
 git add README.md
@@ -783,66 +852,37 @@ git add README.md
 
 ---
 
-# STEP 24 — Commit the Complete Application
+# 5. Create a Commit
 
-Commit:
-
-```powershell
-git add .
-```
-
-Then:
+Initial commit:
 
 ```powershell
-git commit -m "Complete MNIST web application"
+git commit -m "Initial MNIST AI web application"
 ```
 
-Check history:
+For future changes:
 
 ```powershell
-git log --oneline
+git commit -m "Update frontend"
 ```
 
-You should see commits similar to:
+or:
 
-```text
-xxxxxxxx Complete MNIST web application
-xxxxxxxx Add MNIST model training pipeline
+```powershell
+git commit -m "Improve model inference"
 ```
 
 ---
 
-# STEP 25 — Create GitHub Repository
+# 6. Rename Branch to Main
 
-Open GitHub:
-
-https://github.com
-
-Create a new repository:
-
-```text
-mnist-web-app
+```powershell
+git branch -M main
 ```
-
-Recommended:
-
-```text
-Public
-```
-
-Do NOT initialize it with:
-
-```text
-README
-.gitignore
-License
-```
-
-because these already exist locally.
 
 ---
 
-# STEP 26 — Connect Local Git to GitHub
+# 7. Connect Local Repository to GitHub
 
 Repository:
 
@@ -850,13 +890,13 @@ Repository:
 https://github.com/Aliyar4061/mnist-web-app
 ```
 
-Run:
+Add remote:
 
 ```powershell
 git remote add origin https://github.com/Aliyar4061/mnist-web-app.git
 ```
 
-Verify:
+Check:
 
 ```powershell
 git remote -v
@@ -871,52 +911,21 @@ origin  https://github.com/Aliyar4061/mnist-web-app.git (push)
 
 ---
 
-# STEP 27 — Rename Main Branch
-
-Use:
-
-```powershell
-git branch -M main
-```
-
-Verify:
-
-```powershell
-git branch
-```
-
-Expected:
-
-```text
-* main
-```
-
----
-
-# STEP 28 — First Push to GitHub
-
-Push the complete project:
+# 8. Push the First Version
 
 ```powershell
 git push -u origin main
 ```
 
-Expected:
+After the first successful push, future pushes can normally use:
 
-```text
-[new branch] main -> main
-branch 'main' set up to track 'origin/main'
+```powershell
+git push
 ```
-
-Repository:
-
-https://github.com/Aliyar4061/mnist-web-app
 
 ---
 
-# STEP 29 — Verify the Remote Repository
-
-Check remote branches:
+# 9. Check Remote Branches
 
 ```powershell
 git ls-remote --heads origin
@@ -928,329 +937,164 @@ Expected:
 refs/heads/main
 ```
 
-Check status:
+---
+
+# 10. Normal Git Workflow After Making Changes
+
+Whenever you modify the project:
 
 ```powershell
 git status
 ```
-
-Expected:
-
-```text
-On branch main
-Your branch is up to date with 'origin/main'.
-
-nothing to commit, working tree clean
-```
-
----
-
-# 🔄 FUTURE DEVELOPMENT WORKFLOW
-
-After the project has been uploaded to GitHub, use the following workflow every time you make changes.
-
----
-
-# STEP 30 — Start the Project Again
-
-Open PowerShell.
-
-Go to the project:
-
-```powershell
-cd C:\Users\Microsoft\Desktop\mnist-web-app
-```
-
-Activate the environment:
-
-```powershell
-.venv\Scripts\Activate.ps1
-```
-
----
-
-# STEP 31 — Update the Local Repository
-
-Before starting new development:
-
-```powershell
-git pull
-```
-
-This retrieves the latest version from GitHub.
-
----
-
-# STEP 32 — Make Your Changes
-
-Examples:
-
-```text
-Modify model.py
-Modify train.py
-Modify main.py
-Modify index.html
-Modify style.css
-Modify app.js
-```
-
-Test everything locally.
-
----
-
-# STEP 33 — Check Changes
-
-```powershell
-git status
-```
-
-See exact changes:
-
-```powershell
-git diff
-```
-
----
-
-# STEP 34 — Add Changes
-
-Add everything:
-
-```powershell
-git add .
-```
-
-Or add a specific file:
-
-```powershell
-git add backend/main.py
-```
-
----
-
-# STEP 35 — Create a Commit
-
-Use a meaningful message.
-
-Example:
-
-```powershell
-git commit -m "Improve API prediction handling"
-```
-
-Other examples:
-
-```powershell
-git commit -m "Improve frontend interface"
-```
-
-```powershell
-git commit -m "Update MNIST model"
-```
-
-```powershell
-git commit -m "Add prediction confidence display"
-```
-
----
-
-# STEP 36 — Push Changes
-
-After committing:
-
-```powershell
-git push
-```
-
-The changes are now uploaded to GitHub.
-
----
-
-# 🔁 STANDARD DAILY GIT WORKFLOW
-
-For normal development, use:
-
-```powershell
-git pull
-```
-
-Make changes.
 
 Then:
 
 ```powershell
-git status
-```
-
-```powershell
 git add .
 ```
+
+Then:
 
 ```powershell
 git commit -m "Describe your changes"
 ```
 
+Finally:
+
 ```powershell
 git push
 ```
 
-In short:
+The normal cycle is:
 
 ```text
-git pull
-   ↓
 Modify
-   ↓
+  ↓
 git status
-   ↓
+  ↓
 git add .
-   ↓
+  ↓
 git commit
-   ↓
+  ↓
 git push
 ```
 
 ---
 
-# 🌿 Git Branch Management
+# 🔍 Useful Git Commands
 
-Create a new branch:
-
-```powershell
-git checkout -b feature/canvas
-```
-
-Work on the feature.
-
-Then:
-
-```powershell
-git add .
-```
-
-```powershell
-git commit -m "Add drawing canvas"
-```
-
-Push:
-
-```powershell
-git push -u origin feature/canvas
-```
-
-Return to main:
-
-```powershell
-git checkout main
-```
-
-Update main:
-
-```powershell
-git pull
-```
-
----
-
-# 📜 Useful Git Commands
-
-Check status:
-
-```powershell
-git status
-```
-
-View commits:
+Show commit history:
 
 ```powershell
 git log --oneline
 ```
 
-View latest commit:
+Show the latest commit:
 
 ```powershell
 git log --oneline -1
 ```
 
-View branches:
-
-```powershell
-git branch
-```
-
-View remote:
+Show remote:
 
 ```powershell
 git remote -v
 ```
 
-View differences:
+Show current branch:
 
 ```powershell
-git diff
+git branch
 ```
 
-Download latest changes:
-
-```powershell
-git pull
-```
-
-Upload changes:
-
-```powershell
-git push
-```
-
-Stage all changes:
-
-```powershell
-git add .
-```
-
-Commit:
-
-```powershell
-git commit -m "Commit message"
-```
-
----
-
-# 🧠 Retraining the Model
-
-If you change the neural network or training parameters:
-
-```powershell
-cd C:\Users\Microsoft\Desktop\mnist-web-app
-.venv\Scripts\Activate.ps1
-cd backend
-```
-
-Train:
-
-```powershell
-python train.py
-```
-
-Verify:
-
-```powershell
-Get-Item .\model.pth
-```
-
-Return to root:
-
-```powershell
-cd ..
-```
-
-Check:
+Check working tree:
 
 ```powershell
 git status
 ```
 
-If `model.pth` changed:
+Show changes:
+
+```powershell
+git diff
+```
+
+---
+
+# 🚫 Files That Should NOT Be Uploaded
+
+The following should normally remain outside Git:
+
+```text
+.venv/
+__pycache__/
+data/
+```
+
+They are excluded using:
+
+```text
+.gitignore
+```
+
+Do not manually upload the entire `.venv` directory.
+
+---
+
+# 📦 Model File
+
+The trained model is:
+
+```text
+backend/model.pth
+```
+
+If the model is small enough, it can be stored directly in the repository.
+
+Check its size:
+
+```powershell
+Get-Item .\backend\model.pth |
+Select-Object Name,@{Name="SizeMB";Expression={[math]::Round($_.Length/1MB,2)}}
+```
+
+If future model files become large, consider using **Git LFS**.
+
+---
+
+# 🔁 Retraining the Model
+
+To retrain:
+
+```powershell
+cd backend
+```
+
+Then:
+
+```powershell
+python train.py
+```
+
+After training, verify:
+
+```powershell
+Get-Item .\model.pth
+```
+
+Return to project root:
+
+```powershell
+cd ..
+```
+
+Check changes:
+
+```powershell
+git status
+```
+
+If the model changed:
 
 ```powershell
 git add backend/model.pth
@@ -1270,306 +1114,73 @@ git push
 
 ---
 
-# 📦 Requirements Management
+# 🛑 Stopping the Application
 
-If dependencies change:
-
-```powershell
-pip install package-name
-```
-
-Update requirements:
-
-```powershell
-pip freeze > backend/requirements.txt
-```
-
-Then:
-
-```powershell
-git add backend/requirements.txt
-```
-
-```powershell
-git commit -m "Update Python dependencies"
-```
-
-```powershell
-git push
-```
-
----
-
-# 🔐 `.gitignore`
-
-The following should not normally be uploaded:
+FastAPI runs in one terminal:
 
 ```text
-.venv/
-__pycache__/
-data/
-.ipynb_checkpoints/
-.vscode/
-*.log
-```
-
-Never commit:
-
-```text
-API keys
-Passwords
-Access tokens
-Private keys
-Credentials
-Secrets
-```
-
-If environment variables are introduced later, add:
-
-```text
-.env
-```
-
-to `.gitignore`.
-
----
-
-# 📦 Model File
-
-The trained model is:
-
-```text
-backend/model.pth
-```
-
-Check its size:
-
-```powershell
-Get-Item .\backend\model.pth |
-Select-Object Name,@{Name="SizeMB";Expression={[math]::Round($_.Length/1MB,2)}}
-```
-
-The current model is small enough for the current project.
-
-For substantially larger models, Git LFS should be considered.
-
----
-
-# 🛑 Stop the Servers
-
-FastAPI:
-
-```text
-Ctrl + C
-```
-
-Frontend:
-
-```text
-Ctrl + C
-```
-
----
-
-# 🔌 API Reference
-
-## GET `/`
-
-Returns API information.
-
-Example:
-
-```json
-{
-    "message": "MNIST Digit Recognition API is running",
-    "model": "MNISTCNN",
-    "device": "cpu"
-}
-```
-
----
-
-## GET `/health`
-
-Checks API and model status.
-
-Example:
-
-```json
-{
-    "status": "ok",
-    "model_loaded": true,
-    "device": "cpu"
-}
-```
-
----
-
-## POST `/predict`
-
-Accepts an image and returns the predicted digit.
-
-Request:
-
-```text
-POST /predict
-Content-Type: multipart/form-data
-```
-
-Parameter:
-
-```text
-file
-```
-
-Example:
-
-```json
-{
-    "prediction": 7,
-    "confidence": 0.9987,
-    "filename": "seven.png"
-}
-```
-
----
-
-# 🌐 Local URLs
-
-Backend:
-
-```text
-http://127.0.0.1:8000
-```
-
-Swagger:
-
-```text
-http://127.0.0.1:8000/docs
-```
-
-Health:
-
-```text
-http://127.0.0.1:8000/health
-```
-
-Frontend:
-
-```text
-http://127.0.0.1:5500
-```
-
-GitHub:
-
-```text
-https://github.com/Aliyar4061/mnist-web-app
-```
-
----
-
-# 📁 Final Project Structure
-
-```text
-mnist-web-app/
-│
-├── .venv/
-│
-├── backend/
-│   ├── main.py
-│   ├── model.py
-│   ├── model.pth
-│   ├── requirements.txt
-│   └── train.py
-│
-├── frontend/
-│   ├── app.js
-│   ├── index.html
-│   └── style.css
-│
-├── .gitignore
-│
-└── README.md
-```
-
----
-
-# 🧪 Complete Reproduction Procedure
-
-If you want to rebuild the project from scratch, the essential sequence is:
-
-```powershell
-mkdir mnist-web-app
-cd mnist-web-app
-
-git init
-
-git config --global user.name "Ali Zeydi Abdian"
-git config --global user.email "aabdian67@gmail.com"
-
-python -m venv .venv
-.venv\Scripts\Activate.ps1
-
-mkdir backend
-mkdir frontend
-```
-
-Create `.gitignore`.
-
-Then:
-
-```powershell
-cd backend
-
-pip install torch torchvision torchaudio
-pip install fastapi uvicorn python-multipart pillow
-
-pip freeze > requirements.txt
-```
-
-Create:
-
-```text
-model.py
-train.py
-```
-
-Train:
-
-```powershell
-python train.py
-```
-
-Create:
-
-```text
-main.py
-```
-
-Run API:
-
-```powershell
 uvicorn main:app --reload
 ```
 
-Test:
+Frontend runs in another:
 
 ```text
-http://127.0.0.1:8000/docs
+python -m http.server 5500
 ```
 
-Create:
+To stop either server:
 
 ```text
-frontend/index.html
-frontend/style.css
-frontend/app.js
+Ctrl + C
 ```
 
-Run frontend:
+---
+
+# 🧹 Deactivate Virtual Environment
+
+When finished:
 
 ```powershell
-cd ../frontend
+deactivate
+```
+
+The:
+
+```text
+(.venv)
+```
+
+indicator will disappear.
+
+---
+
+# 🔄 Starting the Project Again
+
+When returning to the project later:
+
+```powershell
+cd C:\Users\Microsoft\Desktop\mnist-web-app
+```
+
+Activate environment:
+
+```powershell
+.venv\Scripts\Activate.ps1
+```
+
+Start backend:
+
+```powershell
+cd backend
+uvicorn main:app --reload
+```
+
+Open another terminal.
+
+Start frontend:
+
+```powershell
+cd C:\Users\Microsoft\Desktop\mnist-web-app\frontend
 python -m http.server 5500
 ```
 
@@ -1579,99 +1190,218 @@ Open:
 http://127.0.0.1:5500
 ```
 
-Then return to root:
+---
+
+# 🧪 Quick Start
+
+For an already configured project, the shortest startup procedure is:
+
+### Terminal 1 — Backend
 
 ```powershell
-cd ..
+cd C:\Users\Microsoft\Desktop\mnist-web-app
+.venv\Scripts\Activate.ps1
+cd backend
+uvicorn main:app --reload
 ```
 
-Git:
+### Terminal 2 — Frontend
 
 ```powershell
-git status
-git add .
-git commit -m "Complete MNIST web application"
+cd C:\Users\Microsoft\Desktop\mnist-web-app
+.venv\Scripts\Activate.ps1
+cd frontend
+python -m http.server 5500
 ```
 
-Connect GitHub:
+Then open:
 
-```powershell
-git remote add origin https://github.com/Aliyar4061/mnist-web-app.git
-```
-
-Set main:
-
-```powershell
-git branch -M main
-```
-
-Push:
-
-```powershell
-git push -u origin main
+```text
+http://127.0.0.1:5500
 ```
 
 ---
 
-# 🎯 Final Architecture
+# 🧩 Troubleshooting
+
+## `python` command not found
+
+Check:
+
+```powershell
+py -0p
+```
+
+You can also create the environment using:
+
+```powershell
+py -3 -m venv .venv
+```
+
+---
+
+## Virtual environment does not activate
+
+Run:
+
+```powershell
+Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser
+```
+
+Then:
+
+```powershell
+.venv\Scripts\Activate.ps1
+```
+
+---
+
+## FastAPI cannot find `model.pth`
+
+Make sure:
 
 ```text
-                         GitHub
-                           │
-                           │
-                           ▼
-                 ┌──────────────────┐
-                 │  mnist-web-app   │
-                 └────────┬─────────┘
-                          │
-              ┌───────────┴───────────┐
-              │                       │
-              ▼                       ▼
-        ┌────────────┐          ┌────────────┐
-        │  Backend   │          │  Frontend  │
-        │            │          │            │
-        │ PyTorch    │          │ HTML       │
-        │ CNN        │          │ CSS        │
-        │ FastAPI    │          │ JavaScript │
-        └─────┬──────┘          └─────┬──────┘
-              │                       │
-              │       HTTP API        │
-              └───────────┬───────────┘
-                          │
-                          ▼
-                   ┌──────────────┐
-                   │   MNIST CNN  │
-                   │              │
-                   │  model.pth   │
-                   └──────┬───────┘
-                          │
-                          ▼
-                 Digit Prediction
-                          │
-                          ▼
-                  Confidence Score
+backend/model.pth
 ```
+
+exists.
+
+Check:
+
+```powershell
+Get-Item .\model.pth
+```
+
+Run FastAPI from the backend directory:
+
+```powershell
+cd backend
+uvicorn main:app --reload
+```
+
+---
+
+## `ModuleNotFoundError`
+
+Make sure `.venv` is activated:
+
+```powershell
+.venv\Scripts\Activate.ps1
+```
+
+Then:
+
+```powershell
+pip install -r backend\requirements.txt
+```
+
+---
+
+## Frontend cannot connect to API
+
+Make sure FastAPI is running:
+
+```text
+http://127.0.0.1:8000
+```
+
+Test:
+
+```text
+http://127.0.0.1:8000/health
+```
+
+Then start frontend:
+
+```powershell
+cd frontend
+python -m http.server 5500
+```
+
+---
+
+## Git Push fails
+
+Check remote:
+
+```powershell
+git remote -v
+```
+
+It should be:
+
+```text
+https://github.com/Aliyar4061/mnist-web-app.git
+```
+
+Check branch:
+
+```powershell
+git branch
+```
+
+It should show:
+
+```text
+* main
+```
+
+Then:
+
+```powershell
+git push
+```
+
+---
+
+# 🔐 Security
+
+Do not commit sensitive information such as:
+
+```text
+API keys
+Passwords
+Access tokens
+Private keys
+.env files containing secrets
+Credentials
+```
+
+If environment variables are introduced in future versions, add:
+
+```text
+.env
+```
+
+to `.gitignore`.
 
 ---
 
 # 🚧 Future Improvements
 
-Possible next versions:
+Planned improvements include:
 
 * Interactive drawing canvas
-* Drag & drop upload
+* Drag-and-drop image upload
 * Automatic image inversion
-* Thresholding
-* Image centering
+* Image thresholding
+* Automatic cropping
+* Digit centering
 * Noise removal
-* Top-3 predictions
 * Prediction probability chart
-* Responsive mobile UI
+* Top-3 predictions
+* Better responsive design
 * Docker deployment
 * Cloud deployment
-* Automated testing
-* GitHub Actions CI/CD
 * Production API configuration
+* Automated testing
+* CI/CD with GitHub Actions
+
+---
+
+# 📜 License
+
+This project is intended for educational and research purposes.
 
 ---
 
@@ -1686,9 +1416,3 @@ https://github.com/Aliyar4061
 Project:
 
 https://github.com/Aliyar4061/mnist-web-app
-
----
-
-# 📜 License
-
-This project is intended for educational and research purposes.
